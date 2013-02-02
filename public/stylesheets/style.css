@@ -1,13 +1,5 @@
-/*
- * Import nib
- */
-/*
- * Grab a custom font from Google
- */
 @import url("http://fonts.googleapis.com/css?family=Quicksand");
-/*
- * Nib provides a CSS reset
- */
+/* CSS reset using NIB */
 html,
 body,
 div,
@@ -99,10 +91,7 @@ td {
 a img {
   border: none;
 }
-/*
- * Store the main color and
- * background color as variables
- */
+/* color variable */
 body {
   font-family: 'Georgia';
   background-color: #faf9f0;

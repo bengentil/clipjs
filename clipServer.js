@@ -8,28 +8,33 @@ var express = require('express')
     , server = http.createServer(app)
     , io = require('socket.io').listen(server);
 
-server.listen(3000)
+server.listen(3000);
 
+// Jade
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+
+// Stylus
 function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .use(nib())
+    return stylus(str)
+            .set('filename', path)
+            .use(nib());
 }
-app.set('views', __dirname + '/views')
-app.set('view engine', 'jade')
-app.use(express.logger('dev'))
-app.use(stylus.middleware(
-  { src: __dirname + '/public'
-  , compile: compile
-  }
-))
-app.use(express.static(__dirname + '/public'))
 
+app.use(stylus.middleware(
+    { src: __dirname + '/public' , compile: compile}
+));
+
+// Static files
+app.use(express.static(__dirname + '/public'));
+
+// Route / as index
 app.get('/', function (req, res) {
-  res.render('index',
-  { pageTitle : 'ClipJS - Home' }
-  )
-})
+    res.render('index', {pageTitle: 'ClipJS - Home'});
+});
+
+// Display response
+app.use(express.logger('dev'))
 
 var allClients = 0;  
 var clientId = 1;  
