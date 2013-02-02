@@ -1,0 +1,59 @@
+/*
+ * Import nib
+ */
+@import 'nib'
+
+/*
+ * Grab a custom font from Google
+ */
+@import url('http://fonts.googleapis.com/css?family=Quicksand')
+
+/*
+ * Nib provides a CSS reset
+ */
+global-reset()
+
+/*
+ * Store the main color and
+ * background color as variables
+ */
+main-color = #4d5b4d
+background-color = #faf9f0
+
+body
+  font-family 'Georgia'
+  background-color background-color
+  color #444
+
+header
+  font-family 'Quicksand'
+  padding 10px 10px
+  color #fff
+  font-size 25px
+  text-align center
+
+  background-color main-color
+  border-bottom 1px solid darken(main-color, 30%)
+  text-shadow 0px -1px 0px darken(main-color, 30%)
+
+#container
+  width 100%
+  overflow hidden
+
+  textarea
+    height 500px
+    width 100%
+    color black
+    border 1px solid main-color
+    background-image -webkit-radial-gradient(85% 85%,ellipse cover,white 0%,#D9D9D9 100%)
+
+footer
+  width 500px
+  margin 30px auto
+  border-top 1px dotted #ccc
+  border-bottom 1px dotted #ccc
+  padding-top 5px
+  padding-bottom 5px
+  font-size 13px
+  text-align center
+  color #888

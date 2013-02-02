@@ -1,0 +1,44 @@
+doctype 5
+html(lang="en")
+    head
+        title= pageTitle
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='http://code.jquery.com/jquery-1.9.0.min.js')
+        script(src='/socket.io/socket.io.js')
+        script(type='text/javascript')
+            $(document).ready(function () { 
+                var socket = io.connect();
+                var clientDate = new Date().getTime();
+                var serverDate;
+                socket.on('message', function (data) { 
+                    var obj = JSON.parse(data); 
+                    if(obj.message) { 
+                        $('#message').val(obj.message); 
+                    } else {
+                        serverDate =  obj.timestamp;
+                        //$('#timestamp').text(obj.timestamp);
+                        $('#clients').text(obj.clients + ' clients'); 
+                    } 
+                });
+                var timer = setInterval(function () { 
+                    clientDate = new Date().getTime();
+                    var latency=(clientDate - serverDate);
+                    var status='Connected';
+                    if(latency > 10000) {
+                        status='Disconnected';
+                    }
+                    $('#timestamp').text(status+' '+latency+' ms');
+                }, 1000); 
+                $('#message').bind('keyup change', function() { socket.send($('#message').val()); }); 
+            });
+
+    body
+        header
+            h2 Clipboard
+        #container 
+            textarea#message
+        footer
+            label Status: 
+            span#timestamp
+            span &nbsp;|&nbsp; 
+            span#clients
