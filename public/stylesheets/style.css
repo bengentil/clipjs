@@ -125,7 +125,7 @@ header {
 #container textarea {
   height: 500px;
   width: 100%;
-  color: blakc;
+  color: #000;
   border: 1px solid #4d5b4d;
   background-image: -webkit-radial-gradient(85% 85%, ellipse cover, #fff 0%, #d9d9d9 100%);
 }

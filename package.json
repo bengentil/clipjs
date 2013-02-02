@@ -6,7 +6,8 @@
     "express": "*",
     "jade": "*",
     "stylus": "*",
-    "nib": "*"
+    "nib": "*",
+    "socket.io": "*"
   }
 }
 
